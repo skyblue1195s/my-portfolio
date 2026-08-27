@@ -19,7 +19,7 @@ export const personalDetails: PersonalDetails = {
   phone: "+84 96929 3735",
   email: "khacdieu1195@gmail.com",
   skype: "live:khacdieu1195 (Dieu Tran)",
-  linkedin: "https://linkedin.com/in/dieu-tran-khac",
+  linkedin: "https://www.linkedin.com/in/dieu-tran-19494b222/",
   github: "https://github.com/khacdieu1195",
   status: {
     en: "Available for new opportunities",
