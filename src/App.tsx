@@ -16,11 +16,35 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<ProjectInfo | null>(null);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
 
-  // Sync title with language
+  // Sync title and SEO meta with language
   useEffect(() => {
-    document.title = lang === 'vi' 
-      ? 'Trần Khắc Điệu (Dieu Tran Khac) — Frontend Software Developer' 
-      : 'Dieu Tran Khac — Senior Frontend Software Developer CV';
+    const isVi = lang === 'vi';
+    document.documentElement.lang = isVi ? 'vi' : 'en';
+
+    const title = isVi
+      ? 'Trần Khắc Điều (Dieu Tran Khac) — Senior Frontend Software Developer | Portfolio & CV'
+      : 'Dieu Tran Khac (Trần Khắc Điều) — Senior Frontend Software Developer | Portfolio & CV';
+    document.title = title;
+
+    const description = isVi
+      ? 'Portfolio & CV chính thức của Trần Khắc Điều (Dieu Tran Khac) - Senior Frontend Software Developer với hơn 5 năm kinh nghiệm ReactJS, Next.js, Angular, React Native, TypeScript.'
+      : 'Official Portfolio & CV of Dieu Tran Khac - Senior Frontend Software Developer with 5+ years of experience in ReactJS, Next.js, Angular, React Native, TypeScript.';
+
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', description);
+    }
+
+    // Update OG title & description
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', title);
+    }
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+      ogDesc.setAttribute('content', description);
+    }
   }, [lang]);
 
   return (
